@@ -26,12 +26,10 @@ def convertWavToMp3():
             mp3_file = os.path.splitext(wav_file)[0] + ".mp3"
             if mp3_file in mp3_files:
                 print("File already converted to mp3.")
-                os.remove(wav_file)
                 continue
             try:
                 sound = pydub.AudioSegment.from_wav(wav_file)
                 sound.export(mp3_file, format="mp3")
-                os.remove(wav_file)
                 counter += 1
                 totalCount += 1
                 print(f"{counter} files out of {len(wav_files)} converted in the {dirs} directory.")
